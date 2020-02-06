@@ -38,8 +38,8 @@ def home():
         f"/api/v1.0/precipitation<br/>"
         f"/api/v1.0/stations<br/>"
         f"/api/v1.0/tobs<br/>"
-        f"/api/v1.0/<start><br/>"
-        f"/api/v1.0/<start>/<end>"
+        f"/api/v1.0/2012-02-28<br/>"
+        f"/api/v1.0/2012-02-28/2013-02-28"
         )
 
 # 4. Define what to do when a user hits the /precipitation route
@@ -67,12 +67,46 @@ def stations():
     station_list = list(np.ravel(station_list))
     session.close()
     return jsonify(station_list)
-    
-# 6. Define what to do when a user hits the /stations route
+
+#6. Define what to do when a user hits the /tobs route
 @app.route("/api/v1.0/tobs")
 def tobs():
     print("Server received request for 'tobs' page...")
-    return "Welcome to my tobs page!"
+
+    session = Session(engine)
+    tobs_list = session.query(Measurement.tobs).all()
+    tobs_list = list(np.ravel(tobs_list))
+    session.close()
+    return jsonify(tobs_list)
+#-------------------------------------------------------------------------   
+# 6. Define what to do when a user hits the <start> route
+
+
+
+@app.route("/api/v1.0/<start>")
+def temps_start(start):
+    print("Server received request for '<start>' page...")
+    session = Session(engine)
+    x = session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
+        filter(Measurement.date >= start).all()
+    session.close()
+
+    return jsonify(x)
+#-------------------------------------------------------------------------  
+# 7. Define what to do when a user hits the <start><end> route
+
+@app.route("/api/v1.0/<start>/<end>")
+def temps_start_end(start, end):
+    print("Server received request for <start>/<end> page...")
+
+    session = Session(engine)
+    y=session.query(func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
+        filter(Measurement.date >= start).filter(Measurement.date <= end).all()
+    session.close()
+    return jsonify(y)
+
+
+   
 
 if __name__ == "__main__":
     app.run(debug=True)
