@@ -8,7 +8,7 @@ Using Python and SQLAlchemy, I connected to the data in in a sqlite database.  L
   
 
 
-<h2>Create a Flask API based on the qureries</h2>
+<h2>Part 2:  Create a Flask API based on the qureries</h2>
 
 
 1. 
