@@ -4,7 +4,7 @@ The goal for this assignment is to explore Honolulu's climate through the city's
 
 <h2>Part 1: Data exploration with Python and SQLAlchemy</h2>
 
-Using Python and SQLAlchemy, I connected to the data in in a sqlite database.  Looking at the last 12 months of data
+The climate data is stored in a sqlite database.  Using Python and SQLAlchemy, I connected to the database and reflected the tables into classes.  To understand precipitation trends by date, I designed a query to retrieve the ast 12 months of precipitation and plotted the results in bar graph.
   
 
 
