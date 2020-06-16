@@ -1,6 +1,6 @@
 <h1>Exploring Honolulu's Climate</h1>
 
-The goal for this assignment is to explore Honolulu's climate through the city's precipitation data and create a Flask API to based on the exploreation queries.  This project is divided into 2 parts.
+The goal for this assignment is to explore Honolulu's climate through the city's precipitation data and create a Flask API to based on the exploration queries.  This project is divided into 2 parts.
 
 <h2>Part 1: Data exploration with Python and SQLAlchemy</h2>
 
