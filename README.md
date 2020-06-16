@@ -11,11 +11,4 @@ The climate data is stored in a sqlite database.  Using Python and SQLAlchemy, I
 <h2>Part 2:  Create a Flask API based on the qureries</h2>
 
 
-1. 
-<ul>
-  <li>Used Python to connect to the data stored in a sqlite db with SQLAlchemy</li>
-</ul>
-2.  Create a Flask API based on the qureries 
-
-
-The data is stored in a sqlite database, and I connected to the database
+I used Flask to create 4 flask routs that returned JSON representation of the query result.
